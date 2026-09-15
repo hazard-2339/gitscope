@@ -1,0 +1,31 @@
+[build-system] #tells python which tool packages the app
+requires = ["setuptools>=68.0"]
+build-backend = "setuptools.build_meta"
+
+[project]  #holds app's dependencies
+name = "gitscope"
+version = "0.1.0"
+description = "A Git intelligence CLI that analyzes any Git repository and generates engineering insights."
+readme = "README.md"
+requires-python = ">=3.9"
+
+
+dependencies = [
+    "GitPython>=3.1.40",
+    "rich>=13.7.0",
+    "pandas>=2.0.0",
+    "typer>=0.9.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.4.0",
+]
+
+
+[project.scripts]
+gitscope = "gitscope.cli:app"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
