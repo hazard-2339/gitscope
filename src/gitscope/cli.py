@@ -176,7 +176,7 @@ def analyze(
         summary = analyzer.analyze(
             branch=branch,
             since=since,
-            top_n=top,
+            top_n_files=top,
         )
 
     # Create the report renderer using our shared terminal console.

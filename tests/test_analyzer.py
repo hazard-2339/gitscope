@@ -2,8 +2,11 @@ import subprocess
 from pathlib import Path
 
 import pytest
+# Import the analyzer that runs repository analysis.
+from gitscope.analyzer import GitRepoAnalyzer
 
-from gitscope.analyzer import GitRepoAnalyzer, NotAGitRepoError
+# Import the custom error from the file where it is defined.
+from gitscope.git_utils import NotAGitRepoError
 
 
 def _run(cmd: list[str], cwd: Path) -> None:

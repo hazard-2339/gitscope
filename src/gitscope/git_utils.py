@@ -19,7 +19,7 @@ class NumstatEntry:
     path: str
 
 
-class NotGitRepositoryError(Exception):
+class NotAGitRepoError(Exception):
     """Raised when the provided path is not a valid Git repository."""
 
 
@@ -32,7 +32,7 @@ class GitRepoWrapper:
                 search_parent_directories=True,
             )
         except (InvalidGitRepositoryError, NoSuchPathError) as exc:
-            raise NotGitRepositoryError(
+            raise NotAGitRepoError(
                 f"The path '{self.path}' is not a valid Git repository."
             ) from exc
 

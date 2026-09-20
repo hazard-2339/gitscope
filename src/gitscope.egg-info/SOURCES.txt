@@ -1,0 +1,15 @@
+README.md
+pyproject.toml
+src/gitscope/__init__.py
+src/gitscope/analyzer.py
+src/gitscope/cli.py
+src/gitscope/git_utils.py
+src/gitscope/models.py
+src/gitscope/report.py
+src/gitscope.egg-info/PKG-INFO
+src/gitscope.egg-info/SOURCES.txt
+src/gitscope.egg-info/dependency_links.txt
+src/gitscope.egg-info/entry_points.txt
+src/gitscope.egg-info/requires.txt
+src/gitscope.egg-info/top_level.txt
+tests/test_analyzer.py

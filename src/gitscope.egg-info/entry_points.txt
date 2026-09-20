@@ -1,0 +1,2 @@
+[console_scripts]
+gitscope = gitscope.cli:app

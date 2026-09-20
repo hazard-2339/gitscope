@@ -4,7 +4,10 @@ from pathlib import Path
 
 import pandas as pd
 
-from gitscope.git_utils import GitRepoWrapper
+from gitscope.models import CommitInfo, ContributorStats, FileChurn, RepoSummary
+
+from gitscope.git_utils import GitRepoWrapper, NotAGitRepoError
+
 from gitscope.models import CommitInfo, ContributorStats, FileChurn, RepoSummary
 
 
@@ -21,7 +24,7 @@ class GitRepoAnalyzer:
         top_n_files: int = 10,
     ) -> RepoSummary:
         commits: list[CommitInfo] = [
-            self.build_commit_info(commit)
+            self.repo.build_commit_info(commit)
             for commit in self.repo.iter_commits(branch=branch, since=since)
         ]
 
@@ -49,21 +52,6 @@ class GitRepoAnalyzer:
 
         return summary
 
-    def build_commit_info(self, commit) -> CommitInfo:
-        stats = getattr(commit, "stats", None)
-        totals = getattr(stats, "total", {}) if stats is not None else {}
-
-        return CommitInfo(
-            sha=commit.hexsha,
-            author_name=getattr(commit.author, "name", "unknown") or "unknown",
-            author_email=(getattr(commit.author, "email", "unknown") or "unknown").lower(),
-            committed_date=commit.committed_date,
-            message=(commit.message.strip().splitlines()[0] if commit.message.strip() else ""),
-            is_merge=len(commit.parents) > 1,
-            insertions=totals.get("insertions", 0),
-            deletions=totals.get("deletions", 0),
-            files_changed=totals.get("files", 0),
-        )
 
     def compute_contributor_stats(
         self,
