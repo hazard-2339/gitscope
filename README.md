@@ -5,7 +5,8 @@ who's contributing, which files are the hottest churn points, and how
 activity has trended over time. Output is a clean terminal report built
 with [Rich](https://github.com/Textualize/rich):
 
-```
+```<img width="718" height="902" alt="Screenshot 2026-09-20 221414" src="https://github.com/user-attachments/assets/dd3e63b6-1d4a-4fd1-aafe-d5ec90896047" />
+
 ╭──────────────────── GitScope Analysis -- myrepo ─────────────────────╮
 │      842            18              9              5                 │
 │    Commits       Branches      Contributors       Tags                │
